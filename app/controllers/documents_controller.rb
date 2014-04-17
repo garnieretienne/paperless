@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
 
   def index
-    @documents = current_user.documents
+    @documents = paginate current_user.documents
   end
 
   def create
@@ -30,12 +30,17 @@ class DocumentsController < ApplicationController
 
   def search
     @query = params[:query]
-    @documents = current_user.documents.search @query.downcase
+    @documents = paginate current_user.documents.search(@query.downcase)
   end
 
   private
 
   def document_params
     params.require(:document).permit(:file)
+  end
+
+  def paginate(documents)
+    @page = params[:page]
+    documents.paginate page: @page, per_page: 15
   end
 end

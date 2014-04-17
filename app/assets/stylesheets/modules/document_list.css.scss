@@ -21,3 +21,13 @@
   padding: 0.4em 0;
   border-bottom: 1px solid $gray;
 }
+
+.document-list-pagination {
+  margin: 1em 0;
+  text-align: right;
+
+  .current {
+    font-style: inherit;
+    font-weight: bold;
+  }
+}

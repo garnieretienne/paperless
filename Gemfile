@@ -62,3 +62,6 @@ gem 'normalize-rails'
 
 # Use Neat CSS Grid
 gem 'neat'
+
+# Paginate results
+gem 'will_paginate', '~> 3.0'
