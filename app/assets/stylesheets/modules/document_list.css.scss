@@ -1,5 +1,17 @@
 @import "globals/all";
 
+.document-list > h3 {
+  margin-bottom: 0;
+  font-size: 1.4em;
+}
+
+.document-list > h4 {
+  margin-top: 0;
+  color: lighten($black, 30%);
+  font-weight: normal;
+  // font-style: italic;
+}
+
 .document-list > ul {
   margin: 0;
   padding: 0;
