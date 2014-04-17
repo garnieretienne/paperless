@@ -1,4 +1,14 @@
+@import "globals/all";
+
 .document-search-form > input[type=text] {
+  display: inline-block;
   min-width: 20em;
   width: 50%;
+  border: 1px solid $gray;
+  font-size: 0.8em;
+  padding: 0.4em 0.6em;
+}
+
+.document-search-form > .button {
+  border: 1px solid $blue;
 }

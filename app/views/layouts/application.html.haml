@@ -17,7 +17,7 @@
 
     #content-wrapper
       %nav#content-nav
-        %ul
+        %ul.navigation-list
           %li= link_to "All document", documents_path
           %li= render_module :document_upload, document: @new_document
       #content-main

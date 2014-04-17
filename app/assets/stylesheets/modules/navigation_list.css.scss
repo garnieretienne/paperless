@@ -1,0 +1,17 @@
+@import "globals/all";
+
+.navigation-list {
+  list-style-type: none;
+  padding: 1em;
+  margin: 0;
+}
+
+.navigation-list > li {
+  margin: 0.6em 0;
+}
+
+.navigation-list > hr {
+  border: 0;
+  border-bottom: 1px solid $gray;
+  margin: 1em 0;
+}

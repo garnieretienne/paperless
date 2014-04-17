@@ -1,20 +1,23 @@
 @import "bourbon";
-@import "grid-settings";
+@import "globals/grid-settings";
 @import "neat";
+@import "globals/all";
 
 #header {
   @include outer-container;
   display: flex;
   align-items: baseline;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid $gray;
 }
 
 #header > #logo {
   @include span-columns(2);
+  text-align: center;
 }
 
 #header > #user {
   @include span-columns(2);
+  text-align: center;
 }
 
 #header > #search-form {
@@ -27,7 +30,7 @@
 
 #content-wrapper > #content-nav {
   @include span-columns(2);
-  border-right: 1px solid gray;
+  border-right: 1px solid $gray;
 }
 
 #content-wrapper > #content-main {
