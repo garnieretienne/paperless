@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+curt_cobain:
+  first_name: Curt
+  last_name: Cobain
+
+john_smith:
+  first_name: John
+  last_name: Smith

@@ -1,0 +1,10 @@
+.document-list
+  %h3= list_name
+  %h4= "#{documents.length} documents found"
+  %ul
+    - documents.each do |document|
+      %li.document-list-entry
+        = document.title
+        = link_to "Open", open_document_path(document.id)
+        = link_to "Delete", document_path(document.id), method: :delete,
+          data: {confirm: "Are you sure ?"}

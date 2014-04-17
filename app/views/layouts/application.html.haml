@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title Paperless
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+
+    %header#header
+      %h1 Paperless
+      %h2= current_user.full_name
+    #content-wrapper
+      %nav#content-nav
+        %ul
+          %li= link_to "All document", documents_path
+          %li= render_module :document_upload, document: @new_document
+      #content-main
+        = yield

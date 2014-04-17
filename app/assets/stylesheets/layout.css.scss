@@ -1,0 +1,31 @@
+@import "bourbon";
+@import "grid-settings";
+@import "neat";
+
+#header {
+  @include outer-container;
+  display: flex;
+  align-items: baseline;
+  border-bottom: 1px solid gray;
+}
+
+#header > h1 {
+  @include span-columns(2);
+}
+
+#header > h2 {
+  @include span-columns(10);
+}
+
+#content-wrapper {
+  @include outer-container;
+}
+
+#content-wrapper > #content-nav {
+  @include span-columns(2);
+  border-right: 1px solid gray;
+}
+
+#content-wrapper > #content-main {
+  @include span-columns(10);
+}

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Document1
+  file: empty.pdf
+  owner: curt_cobain
+
+two:
+  title: Document2
+  file: empty.pdf
+  owner: curt_cobain
