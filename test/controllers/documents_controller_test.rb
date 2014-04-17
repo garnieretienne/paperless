@@ -16,6 +16,17 @@ class DocumentsControllerTest < ActionController::TestCase
     end
   end
 
+  test "should create as many documents as sended" do
+    assert_difference "Document.count", 2 do
+      post :create, document: {file: [
+        fixture_file_upload('files/empty.pdf'),
+        fixture_file_upload('files/empty.pdf')
+      ]}
+      assert_response :redirect
+      assert_redirected_to documents_path
+    end
+  end
+
   test "should open the PDF document in the browser" do
     get :open, id: documents(:one).id
     assert_equal 'inline; filename="empty.pdf"', response.header["Content-Disposition"]
