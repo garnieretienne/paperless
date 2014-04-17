@@ -9,12 +9,16 @@
   border-bottom: 1px solid gray;
 }
 
-#header > h1 {
+#header > #logo {
   @include span-columns(2);
 }
 
-#header > h2 {
-  @include span-columns(10);
+#header > #user {
+  @include span-columns(2);
+}
+
+#header > #search-form {
+  @include span-columns(8);
 }
 
 #content-wrapper {

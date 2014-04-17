@@ -8,8 +8,13 @@
   %body
 
     %header#header
-      %h1 Paperless
-      %h2= current_user.full_name
+      #logo
+        %h1 Paperless
+      #search-form
+        = render_module :document_search_form, query: @query
+      #user
+        %h2= current_user.full_name
+
     #content-wrapper
       %nav#content-nav
         %ul

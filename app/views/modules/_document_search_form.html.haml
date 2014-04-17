@@ -1,0 +1,3 @@
+= form_tag search_documents_path, method: :get, class: "document-search-form" do
+  = text_field_tag :query, query
+  = submit_tag "Search"

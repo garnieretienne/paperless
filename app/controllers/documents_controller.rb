@@ -25,7 +25,12 @@ class DocumentsController < ApplicationController
   def destroy
     document = current_user.documents.find(params[:id])
     document.destroy
-    redirect_to documents_path
+    redirect_to :back
+  end
+
+  def search
+    @query = params[:query]
+    @documents = current_user.documents.search @query.downcase
   end
 
   private
