@@ -6,9 +6,17 @@ class User < ActiveRecord::Base
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :email, presence: true
+  validates :email, uniqueness: true
 
   # Instance methods
+
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def avatar_url
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48"
   end
 end

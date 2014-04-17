@@ -35,6 +35,7 @@ class DocumentsControllerTest < ActionController::TestCase
 
   test "should delete a document" do
     assert_difference "Document.count", -1 do
+      request.env['HTTP_REFERER'] = documents_path
       delete :destroy, id: documents(:one).id
       assert_response :redirect
       assert_redirected_to documents_path

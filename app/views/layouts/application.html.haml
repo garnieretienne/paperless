@@ -13,7 +13,7 @@
       #search-form
         = render_module :document_search_form, query: @query
       #user
-        %h2= current_user.full_name
+        = render_module :user_card, user: current_user
 
     #content-wrapper
       %nav#content-nav

@@ -1,0 +1,14 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 0.4em;
+}
+
+.user-card > .avatar {
+  margin-right: 1em;
+}
+
+.user-card > h2 {
+  font-size: 1.2em;
+  margin: 0;
+}

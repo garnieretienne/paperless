@@ -3,7 +3,9 @@
 curt_cobain:
   first_name: Curt
   last_name: Cobain
+  email: curt.cobain@domain.tld
 
 john_smith:
   first_name: John
   last_name: Smith
+  email: curt.cobain@domain.tld

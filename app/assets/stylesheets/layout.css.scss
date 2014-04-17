@@ -6,7 +6,7 @@
 #header {
   @include outer-container;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid $gray;
 }
 
