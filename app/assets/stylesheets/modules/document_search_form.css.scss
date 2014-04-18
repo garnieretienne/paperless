@@ -2,10 +2,12 @@
 
 .document-search-form > input[type=text] {
   display: inline-block;
-  width: 50%;
+  width: 40em;
+  margin: 0;
 }
 
 .document-search-form > input[type=submit] {
+  margin: 0;
   float: none;
 }
 
