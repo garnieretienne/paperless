@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
 
   def search
     @query = params[:query]
-    @documents = paginate current_user.documents.search(@query.downcase)
+    @documents = paginate current_user.documents.search(@query)
   end
 
   private

@@ -28,10 +28,10 @@ class Document < ActiveRecord::Base
 
   def self.search(query)
     if query.present?
-      rank = <<-RANK
-        ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)}))
-      RANK
-      where("to_tsvector('simple', title) @@ :q", q: query).order("#{rank} desc")
+      rank = "ts_rank(to_tsvector('simple', title), plainto_tsquery(#{sanitize(query)}))"
+      search_query = "to_tsvector('simple', title) @@ :q OR "
+      search_query += "to_tsvector('simple', title) @@ plainto_tsquery(:q)"
+      where(search_query, q: query).order("#{rank} desc")
     else
       all
     end
