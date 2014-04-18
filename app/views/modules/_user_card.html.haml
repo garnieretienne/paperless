@@ -1,3 +1,6 @@
 .user-card
   .avatar= image_tag user.avatar_url
-  %h2= user.full_name
+  .user-card-menu
+    %h2= user.full_name
+    %ul.action-list
+      %li= link_to "Logout", logout_path

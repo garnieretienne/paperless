@@ -1,0 +1,8 @@
+= form_tag url, class: "login-form" do
+  %fieldset
+    %legend Login
+    = label_tag :email
+    = text_field_tag :email, email
+    = label_tag :password
+    = password_field_tag :password
+    = submit_tag "Login", class: "button"

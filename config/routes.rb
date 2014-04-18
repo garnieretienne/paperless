@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'login' => 'users#login'
+  post 'authenticate' => 'users#authenticate'
+  get 'logout' => 'users#logout'
+
   resources :documents, only: [:index, :create, :destroy] do
     member do
       get 'open'
@@ -8,6 +12,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  root 'documents#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

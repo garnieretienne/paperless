@@ -14,6 +14,14 @@ class ActiveSupport::TestCase
   def fixture_file_path(filename)
     Rails.root.join('test', 'fixtures', 'files', filename).to_s
   end
+
+  def authenticate_user(user)
+    session[:user_id] = user.id
+  end
+
+  def deauthenticated_user
+    session[:user_id] = nil
+  end
 end
 
 # Override the default store dir to serve files from fixture path

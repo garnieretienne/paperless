@@ -4,8 +4,12 @@ curt_cobain:
   first_name: Curt
   last_name: Cobain
   email: curt.cobain@domain.tld
+  password_digest: $2a$10$xd9MiGt4UimW8a0rLBA2a.M4UV0TG6YnZe1BdV5Nr/HSeRv9AS7ZO
+  # password: 95ec7cf0070
 
 john_smith:
   first_name: John
   last_name: Smith
   email: curt.cobain@domain.tld
+  password_digest: $2a$10$xd9MiGt4UimW8a0rLBA2a.M4UV0TG6YnZe1BdV5Nr/HSeRv9AS7ZO
+  # password: 95ec7cf0070

@@ -17,7 +17,6 @@
 
 #header > #user {
   @include span-columns(2);
-  text-align: center;
 }
 
 #header > #search-form {
@@ -35,4 +34,8 @@
 
 #content-wrapper > #content-main {
   @include span-columns(10);
+}
+
+#login-form {
+  margin-top: 10em;
 }

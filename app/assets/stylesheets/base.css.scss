@@ -20,3 +20,28 @@ a {
   color: darken($black, 50%);
   text-decoration: none;
 }
+
+input[type=text], input[type=password] {
+  display: block;
+  width: 100%;
+  border: 1px solid $gray;
+  font-size: 0.8em;
+  padding: 0.4em 0.6em;
+  margin-bottom: 1em;
+}
+
+fieldset {
+  padding: 1em 2em;
+  border: 1px solid $gray;
+
+  & > legend {
+    padding: 0 1em;
+    margin-left: -1em;
+    font-weight: bold;
+  }
+}
+
+input[type=submit] {
+  float: right;
+  margin-bottom: 1em;
+}

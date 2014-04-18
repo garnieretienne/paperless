@@ -1,6 +1,18 @@
 require 'test_helper'
 
 class DocumentsControllerTest < ActionController::TestCase
+
+  def setup
+    authenticate_user users(:curt_cobain)
+  end
+
+  test "should not be able to access any pages if non-authenticated" do
+    deauthenticated_user
+    get :index
+    assert_response :redirect
+    assert_redirected_to login_path
+  end
+
   test "should get index" do
     get :index
     assert_not_nil assigns(:documents)
