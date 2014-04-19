@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :documents, dependent: :destroy
+  has_many :labels, dependent: :destroy
 
   # Validations
   validates :first_name, presence: true

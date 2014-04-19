@@ -21,6 +21,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil users(:curt_cobain).documents
   end
 
+  test "user have many labels" do
+    assert_not_nil users(:curt_cobain).labels
+  end
+
   test "user full name" do
     assert_equal "Curt Cobain", users(:curt_cobain).full_name
   end

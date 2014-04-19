@@ -65,3 +65,6 @@ gem 'neat'
 
 # Paginate results
 gem 'will_paginate', '~> 3.0'
+
+# Use some of JQuery UI modules
+gem 'jquery-ui-rails'

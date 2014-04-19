@@ -1,7 +1,8 @@
 @import "globals/all";
 
 .action-list {
-  display: inline;
+  display: inline-block;
+  vertical-align: baseline;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -9,7 +10,7 @@
 }
 
 .action-list > li {
-  display: inline;
+  display: inline-block;
   color: $gray;
 }
 

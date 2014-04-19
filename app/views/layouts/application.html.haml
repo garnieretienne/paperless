@@ -18,7 +18,13 @@
     #content-wrapper
       %nav#content-nav
         %ul.navigation-list
-          %li= link_to "All document", documents_path
+          %li= link_to "All documents", documents_path
           %li= render_module :document_upload, document: @new_document
+          %hr
+          - @user_labels.each do |label|
+            %li
+              .label.is-label-draggable= label.name
+              %ul.action-list
+                %li= link_to "Delete", "#"
       #content-main
         = yield

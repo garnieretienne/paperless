@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Label1
+  user: curt_cobain
+
+two:
+  name: Label2
+  user: curt_cobain

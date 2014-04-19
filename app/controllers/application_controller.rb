@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   before_filter :authenticated!, except: [:login, :logout, :authenticate]
   before_filter :create_new_document, except: [:login, :logout, :authenticate]
+  before_filter :load_user_labels, except: [:login, :logout, :authenticate]
 
   private
 
@@ -15,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def create_new_document
     @new_document = current_user.documents.new
+  end
+
+  def load_user_labels
+    @user_labels = current_user.labels
   end
 
   def authenticated!

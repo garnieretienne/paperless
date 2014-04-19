@@ -9,10 +9,10 @@
   margin-top: 0;
   color: lighten($black, 30%);
   font-weight: normal;
-  // font-style: italic;
 }
 
 .document-list > ul {
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
@@ -20,6 +20,15 @@
 .document-list-entry {
   padding: 0.4em 0;
   border-bottom: 1px solid $gray;
+}
+
+.document-list-entry > h5 {
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0.2em 0;
+  font-size: 1em;
+  font-weight: normal;
 }
 
 .document-list-pagination {
@@ -30,4 +39,8 @@
     font-style: inherit;
     font-weight: bold;
   }
+}
+
+.document-list-entry.is-label-droppable-hover {
+  background-color: darken($white, 4%);
 }

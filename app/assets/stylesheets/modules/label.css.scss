@@ -1,0 +1,20 @@
+@import "globals/all";
+
+.label {
+  display: inline-block;
+}
+
+.is-label-dragging, .is-label-pinned {
+  padding: 0.2em 0.4em;
+  background-color: $green;
+  color: $white;
+  font-size: 0.8em;
+}
+
+.is-label-draggable {
+  cursor: pointer;
+}
+
+.is-label-dragging {
+  cursor: move;
+}
