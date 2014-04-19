@@ -4,11 +4,23 @@
   display: inline-block;
 }
 
+.label-processing {
+  display: none;
+}
+
+.label-delete-link {
+  display: none;
+}
+
 .is-label-dragging, .is-label-pinned {
   padding: 0.2em 0.4em;
   background-color: $green;
   color: $white;
   font-size: 0.8em;
+}
+
+.is-label-pinned > .label-delete-link {
+  display: inline;
 }
 
 .is-label-draggable {
@@ -17,4 +29,12 @@
 
 .is-label-dragging {
   cursor: move;
+}
+
+.is-label-processing > .label-delete-link {
+  display: none;
+}
+
+.is-label-processing > .label-processing {
+  display: inline;
 }

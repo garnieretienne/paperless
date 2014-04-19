@@ -4,8 +4,10 @@ one:
   title: Document1
   file: empty.pdf
   owner: curt_cobain
+  labels: one
 
 two:
   title: Document2
   file: empty.pdf
   owner: curt_cobain
+  labels: one

@@ -3,11 +3,13 @@
   %h4= "#{documents.total_entries} documents found"
   %ul
     - documents.each do |document|
-      %li.document-list-entry.is-label-droppable
+      %li.document-list-entry.is-label-droppable{data: {on_label_drop: "updateDocumentLabels", document_path: document_path(document.id)}}
         %h5= document.title
         %ul.action-list
           %li= link_to "Open", open_document_path(document.id)
           %li= link_to "Delete", document_path(document.id), method: :delete,
           data: {confirm: "Are you sure ?"}
         %ul.label-list
+          - document.labels.each do |label|
+            = render_module :label, label: label, state: "is-label-pinned"
   .document-list-pagination= will_paginate documents

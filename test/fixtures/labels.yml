@@ -3,7 +3,12 @@
 one:
   name: Label1
   user: curt_cobain
+  documents: one
 
 two:
   name: Label2
   user: curt_cobain
+
+three:
+  name: Label3
+  user: john_smith

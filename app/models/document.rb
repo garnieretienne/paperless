@@ -2,6 +2,7 @@ class Document < ActiveRecord::Base
 
   # Associations
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
+  has_and_belongs_to_many :labels
 
   # Attached files
   mount_uploader :file, DocumentUploader
@@ -10,6 +11,7 @@ class Document < ActiveRecord::Base
   validates :owner, presence: true
   validates :title, presence: true
   validates :file, presence: true
+  validates :labels, same_user_ids: true
 
   # Scopes
   default_scope { order(created_at: :desc) }

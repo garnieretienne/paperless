@@ -27,4 +27,16 @@ class DocumentTest < ActiveSupport::TestCase
     assert document.errors[:title].include? "can't be blank"
     assert document.errors[:file].include? "can't be blank"
   end
+
+  test "a document can have many labels" do
+    assert_not_nil documents(:one).labels
+  end
+
+  test "a document cannot attach a label not owned by the document owner" do
+    user1_document = users(:curt_cobain).documents.first
+    user2_label = users(:john_smith).labels.first
+    user1_document.labels << user2_label
+    assert !user1_document.valid?
+    assert user1_document.errors[:labels].include? "does not have the same owners"
+  end
 end

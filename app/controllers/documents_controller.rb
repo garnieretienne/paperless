@@ -33,10 +33,18 @@ class DocumentsController < ApplicationController
     @documents = paginate current_user.documents.search(@query)
   end
 
+  def update
+    document = current_user.documents.find(params[:id])
+    document.update(document_params)
+    respond_to do |format|
+      format.js {render nothing: true}
+    end
+  end
+
   private
 
   def document_params
-    params.require(:document).permit(:file)
+    params.require(:document).permit(:file, label_ids: [])
   end
 
   def paginate(documents)

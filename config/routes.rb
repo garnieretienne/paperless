@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'authenticate' => 'users#authenticate'
   get 'logout' => 'users#logout'
 
-  resources :documents, only: [:index, :create, :destroy] do
+  resources :documents, only: [:index, :create, :destroy, :update] do
     member do
       get 'open'
     end

@@ -53,4 +53,14 @@ class DocumentsControllerTest < ActionController::TestCase
       assert_redirected_to documents_path
     end
   end
+
+  test "should update a document using ajax" do
+    document = documents(:one)
+    assert_difference "document.labels.count" do
+      xhr :patch, :update, id: document.id, document: {
+        label_ids: [labels(:one).id, labels(:two).id]
+      }
+      assert_response :success
+    end
+  end
 end
