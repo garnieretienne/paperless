@@ -1,23 +1,5 @@
 @import "globals/all";
 
 .document-search-form {
-}
-
-.document-search-form > input[type=text] {
-  display: block;
-  float: left;
   width: 40em;
-  margin: 0;
-}
-
-.document-search-form > input[type=submit] {
-  display: block;
-  position: relative;
-  left: -1px;
-  margin: 0;
-  float: none;
-}
-
-.document-search-form > .button {
-  border: 1px solid $blue;
 }

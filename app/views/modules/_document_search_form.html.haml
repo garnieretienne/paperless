@@ -1,3 +1,4 @@
-= form_tag search_documents_path, method: :get, class: "document-search-form" do
-  = text_field_tag :query, query
-  = submit_tag "Search", class: "button"
+.document-search-form
+  = form_tag search_documents_path, method: :get, class: "one-line-form" do
+    = text_field_tag :query, query
+    = submit_tag "Search", class: "button"
