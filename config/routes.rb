@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'labels/show'
+
   get 'login' => 'users#login'
   post 'authenticate' => 'users#authenticate'
   get 'logout' => 'users#logout'
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
+  resources :labels, only: [:show, :create]
 
   root 'documents#index'
 

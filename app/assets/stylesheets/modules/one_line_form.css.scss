@@ -1,0 +1,27 @@
+@import "globals/all";
+
+.one-line-form {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.one-line-form > input[type=text] {
+  display: block;
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding-right: 4em;
+}
+
+.one-line-form > input[type=submit] {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 4em;
+  margin: 0;
+}
+
+.one-line-form > .button {
+  border: 1px solid $blue;
+}

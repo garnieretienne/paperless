@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
 
   def index
-    @documents = paginate current_user.documents
+    @documents = paginate_documents current_user.documents
   end
 
   def create
@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
 
   def search
     @query = params[:query]
-    @documents = paginate current_user.documents.search(@query)
+    @documents = paginate_documents current_user.documents.search(@query)
   end
 
   def attach_label
@@ -57,10 +57,5 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(:file, label_ids: [])
-  end
-
-  def paginate(documents)
-    @page = params[:page]
-    documents.paginate page: @page, per_page: 15
   end
 end

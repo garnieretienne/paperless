@@ -22,7 +22,9 @@
           %li= render_module :document_upload, document: @new_document
           %hr
           - @user_labels.each do |label|
-            %li
-              = render_module :label, label: label, state: "is-label-draggable"
+            - if !label.new_record?
+              %li
+                = render_module :label, label: label, state: "is-label-draggable"
+          %li= render_module :label_creation, label: @new_label
       #content-main
         = yield
