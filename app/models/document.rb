@@ -2,7 +2,7 @@ class Document < ActiveRecord::Base
 
   # Associations
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
-  has_and_belongs_to_many :labels
+  has_and_belongs_to_many :labels, -> { uniq }
 
   # Attached files
   mount_uploader :file, DocumentUploader

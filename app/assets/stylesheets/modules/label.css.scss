@@ -12,6 +12,10 @@
   display: none;
 }
 
+.label-delete-link > a {
+  color: inherit;
+}
+
 .is-label-dragging, .is-label-pinned {
   padding: 0.2em 0.4em;
   background-color: $green;

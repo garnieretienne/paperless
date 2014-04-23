@@ -2,7 +2,7 @@ class Label < ActiveRecord::Base
 
   # Associations
   belongs_to :user
-  has_and_belongs_to_many :documents
+  has_and_belongs_to_many :documents, -> { uniq }
 
   # Validations
   validates :name, presence: true

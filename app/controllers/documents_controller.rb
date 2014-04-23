@@ -33,9 +33,21 @@ class DocumentsController < ApplicationController
     @documents = paginate current_user.documents.search(@query)
   end
 
-  def update
+  def attach_label
     document = current_user.documents.find(params[:id])
-    document.update(document_params)
+    label = current_user.labels.find(params[:label_id])
+    document.labels << label
+    document.save
+    respond_to do |format|
+      format.js {render nothing: true}
+    end
+  end
+
+  def detach_label
+    document = current_user.documents.find(params[:id])
+    label = current_user.labels.find(params[:label_id])
+    document.labels.delete label
+    document.save
     respond_to do |format|
       format.js {render nothing: true}
     end

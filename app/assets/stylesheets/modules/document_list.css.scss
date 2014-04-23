@@ -22,13 +22,17 @@
   border-bottom: 1px solid $gray;
 }
 
-.document-list-entry > h5 {
+.document-list-entry-title {
   display: inline-block;
   vertical-align: baseline;
   margin: 0;
   padding: 0.2em 0;
   font-size: 1em;
   font-weight: normal;
+}
+
+.document-list-entry-title > a {
+  color: inherit;
 }
 
 .document-list-pagination {

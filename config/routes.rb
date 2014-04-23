@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   post 'authenticate' => 'users#authenticate'
   get 'logout' => 'users#logout'
 
-  resources :documents, only: [:index, :create, :destroy, :update] do
+  resources :documents, only: [:index, :create, :destroy] do
     member do
       get 'open'
+      patch 'attach_label'
+      patch 'detach_label'
     end
     collection do
       get 'search'

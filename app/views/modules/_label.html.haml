@@ -1,4 +1,4 @@
 .label{data: {label_id: label.id}, class: defined?(state) ? state : ""}
   = label.name
-  %span.label-delete-link ✕
+  %span.label-delete-link= link_to "✕", "#detach-label"
   %span.label-processing ...

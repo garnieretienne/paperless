@@ -24,7 +24,5 @@
           - @user_labels.each do |label|
             %li
               = render_module :label, label: label, state: "is-label-draggable"
-              %ul.action-list
-                %li= link_to "Delete", "#"
       #content-main
         = yield

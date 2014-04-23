@@ -54,12 +54,18 @@ class DocumentsControllerTest < ActionController::TestCase
     end
   end
 
-  test "should update a document using ajax" do
+  test "should attach a label" do
     document = documents(:one)
     assert_difference "document.labels.count" do
-      xhr :patch, :update, id: document.id, document: {
-        label_ids: [labels(:one).id, labels(:two).id]
-      }
+      xhr :patch, :attach_label, id: document.id, label_id: labels(:two).id
+      assert_response :success
+    end
+  end
+
+  test "should dettach a label" do
+    document = documents(:one)
+    assert_difference "document.labels.count", -1 do
+      xhr :patch, :detach_label, id: document.id, label_id: labels(:one).id
       assert_response :success
     end
   end
