@@ -6,8 +6,14 @@ class LabelsController < ApplicationController
   end
 
   def create
-    @label = current_user.labels.new(label_params)
-    @label.save
+    label = current_user.labels.new(label_params)
+    label.save
+    redirect_to :back
+  end
+
+  def destroy
+    label = current_user.labels.find(params[:id])
+    label.destroy
     redirect_to :back
   end
 

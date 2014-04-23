@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :labels, only: [:show, :create]
+  resources :labels, only: [:show, :create, :destroy]
 
   root 'documents#index'
 
