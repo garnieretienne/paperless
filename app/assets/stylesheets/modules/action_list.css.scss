@@ -2,6 +2,7 @@
 
 .action-list {
   display: inline-block;
+  visibility: hidden;
   vertical-align: baseline;
   list-style-type: none;
   padding: 0;
@@ -20,4 +21,8 @@
 
 .action-list a {
   color: inherit;
+}
+
+.is-action-list-active {
+  visibility: visible;
 }

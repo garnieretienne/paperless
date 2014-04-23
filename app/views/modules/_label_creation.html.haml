@@ -2,6 +2,6 @@
   = form_for label, html: {class: "one-line-form label-creation-form"} do |f|
     = f.text_field :name
     = f.submit "Add", class: "button"
-    %ul.action-list
+    %ul.action-list.is-always-visible
       %li= link_to "Cancel", "#cancel-label-creation", class: "label-creation-cancel-link"
   = link_to "Add label", "#add-label", class: "button label-creation-link"
