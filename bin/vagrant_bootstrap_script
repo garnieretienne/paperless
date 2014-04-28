@@ -3,14 +3,38 @@
 # Bootstrap a development environment on Ubuntu 12.04 system in Vagrant
 
 echo ""
-echo ">> Install dependencies"
+echo ">> Configure repositories and install dependencies"
 echo ""
 
+sudo su -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - &> /dev/null
 sudo apt-get update --assume-yes
 sudo apt-get install --assume-yes git wget curl libyaml-dev libssl-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev build-essential libsqlite3-dev
 
 echo ""
-echo ">> Installing rbenv and rvm-download"
+echo ">> Install and configure PostgreSQL"
+echo ""
+
+sudo apt-get install --assume-yes postgresql-9.3 libpq-dev
+sudo su -c "echo 'host all all all md5' >> '/etc/postgresql/9.3/main/pg_hba.conf'"
+sudo service postgresql restart
+
+# Change postgres default template0 to UTF8 encoding
+# See: https://gist.github.com/ffmike/877447
+cat <<- "EOF" | sudo su - postgres -c psql
+update pg_database set encoding = 6, datcollate = 'en_US.UTF8', datctype = 'en_US.UTF8' where datname = 'template1';
+EOF
+
+cat <<- "EOF" | sudo su - postgres -c psql
+-- Create the database user:
+CREATE USER app WITH PASSWORD 'app';
+
+-- Allow the user to create database
+ALTER ROLE app CREATEDB;
+EOF
+
+echo ""
+echo ">> Installing ruby, rubygem and bundler using rbenv"
 echo ""
 
 git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -21,54 +45,31 @@ source ~/.profile
 
 ruby_version=$(cat /vagrant/.ruby-version)
 
-echo ""
-echo ">> Installing ruby ${ruby_version}"
-echo ""
-
 rbenv download $ruby_version
 rbenv global $ruby_version
 rbenv rehash
 
-echo ""
-echo ">> Building bundler gem"
-echo ""
+# Fix issue `No such file or directory @ rb_sysopen` installing bundler
+rm -f /home/vagrant/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/cache
 
 gem install bundler
 rbenv rehash
 
 echo ""
-echo ">> Install app dependencies"
+echo ">> Install app system dependencies"
 echo ""
 
 sudo apt-get install --assume-yes $(cat /vagrant/debian_packages.list)
 
 echo ""
-echo ">> Install services"
-echo ""
-
-sudo su -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - &> /dev/null
-sudo apt-get update --assume-yes
-sudo apt-get install --assume-yes redis-server postgresql-9.3 postgresql-server-dev-9.3
-sudo su -c "echo 'host all all all md5' >> '/etc/postgresql/9.3/main/pg_hba.conf'"
-sudo service postgresql restart
-cat <<- "EOF" | sudo su - postgres -c psql
--- Create the database user:
-CREATE USER app WITH PASSWORD 'app';
-
--- Allow the user to create database
-ALTER ROLE app CREATEDB;
-EOF
-
-echo ""
-echo ">> Run 'bundle install'"
+echo ">> Install app ruby dependencies"
 echo ""
 
 cd /vagrant
 bundle install --path vendor/bundle
 
 echo ""
-echo ">> Run database migrations"
+echo ">> Setup database"
 echo ""
 
 bundle exec rake db:setup

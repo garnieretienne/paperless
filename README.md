@@ -1,7 +1,9 @@
 # Paperless
 
-Paperless is a web-based personal [Document Management System](http://en.wikipedia.org/wiki/Document_management_system) writted in Ruby on Rails.
-It designed to store electronic documents (as PDF files) online so they that can be accessed from anywhere.
+Paperless is a web-based personal
+[Document Management System](http://en.wikipedia.org/wiki/Document_management_system)
+writted in Ruby on Rails. It designed to store electronic documents
+(as PDF files) online so they that can be accessed from anywhere.
 
 ![UI Screenshot](https://raw.githubusercontent.com/garnieretienne/paperless/master/screenshot.png)
 
@@ -9,12 +11,14 @@ It designed to store electronic documents (as PDF files) online so they that can
 
 ### Requirements
 
-_The installation process has been tested on an Ubuntu 12.04 system running ruby 2.1.0 (installed by rbenv)._
+_The installation process has been tested on an Ubuntu 12.04 system running
+ruby 2.1.0 (installed by rbenv)._
 
 You will need a recent version of ruby (>2.0.0) installed on your system.
 The `bundler` gem must be installed.
 
-You will also need a PostgreSQL database (used to store documents metadata and searching documents).
+You will also need a PostgreSQL database (used to store documents metadata and
+searching documents).
 
 ### Installation
 
@@ -62,6 +66,7 @@ environment=HOME='/srv/app/paperless',RAILS_ENV='production',DATABASE_URL='XXXX'
 [group:paperless]
 programs=paperless-web-1
 ```
+
 _The config file assume the app is installed in `/srv/app/paperless/paperless`
 and must be running under the existing `paperless` user. It also source the
 `~/.profile` file containing rbenv initialization commands._
@@ -69,7 +74,9 @@ and must be running under the existing `paperless` user. It also source the
 ### Managing users
 
 Create a new user:
+
 `bundle exec foreman run rake user:add NAME="Your Name" EMAIL="your.email@domain.tld"`
+
 ```
 Adding user 'Etienne Garnier' with email address 'etienne.garnier@domain.tld'...
 User has been created:
@@ -83,10 +90,31 @@ User has been created:
 
 Pull requests are welcome.
 
+### Getting Started using Vagrant
+
+A bootstrap script is available for vagrant under
+[`bin/vagrant_bootstrap_script`](https://github.com/garnieretienne/paperless/blob/master/bin/vagrant_bootstrap_script).
+
+```
+git clone https://github.com/garnieretienne/paperless.git
+cd paperless
+vagrant up
+vagrant ssh
+cd /vagrant
+bundle exec foreman start # to start the services
+bundle exec rake test # to start running the tests
+```
+
+**Note**: Shared folders on virtualbox can be very slow. If you want to enable
+NFS sharing, set the `PAPERLESS_VAGRANT_ENABLE_NFS` to `true`:
+`PAPERLESS_VAGRANT_ENABLE_NFS=true vagrant up`
+**NFS sharing cannot be enabled if the source folder is inside encrypted home
+on Ubuntu**
+
 ### SMACSS inspired "modules" in the rails app
 
-Paperless use SMACSS inspired modules to represent UI elements.
-These modules can be composed of:
+Paperless use [SMACSS](http://smacss.com/) inspired modules to represent UI
+elements. These modules can be composed of:
 
 * a SAAS file containing CSS style than apply to the module (if any)
 * a coffee script file containing Javascript related code (if any)
