@@ -7,6 +7,9 @@ class Document < ActiveRecord::Base
   # Attached files
   mount_uploader :file, DocumentUploader
 
+  # Callbacks
+  before_validation :convert_image_to_pdf, on: :create
+
   # Validations
   validates :owner, presence: true
   validates :title, presence: true
@@ -36,6 +39,25 @@ class Document < ActiveRecord::Base
       where(search_query, q: query).order("#{rank} desc")
     else
       all
+    end
+  end
+
+  # Instance methods
+
+  private
+
+  def convert_image_to_pdf
+    uploaded_file = file.file
+    if uploaded_file.present? && !uploaded_file.content_type.nil? && uploaded_file.content_type.start_with?("image/")
+      image_path = file.current_path
+      pdf_path = File.dirname(file.current_path) + "/" + File.basename(uploaded_file.file.sub(/\.[^\.]*$/, ".pdf"))
+      if Paperless::PDFUtils.convert_image_to_pdf image_path, pdf_path
+        self.file = File.new pdf_path
+        true
+      else
+        errors[:file] = "cannot be converted imto a PDF file"
+        false
+      end
     end
   end
 end
