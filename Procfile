@@ -1,1 +1,1 @@
-web: puma --threads 0:8 --port 3000
+web: puma --threads 0:8 --port $PORT
