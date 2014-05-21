@@ -69,4 +69,4 @@ gem 'will_paginate', '~> 3.0'
 gem 'jquery-ui-rails'
 
 # Use heroku 12 factor app gem
-gem 'rails_12factor'
+gem 'rails_12factor', group: [:development, :production]

@@ -24,20 +24,8 @@ class DocumentsControllerTest < ActionController::TestCase
 
   test "should create a document" do
     assert_difference "Document.count" do
-      post :create, document: {file: fixture_file_upload('files/empty.pdf')}
-      assert_response :redirect
-      assert_redirected_to documents_path
-    end
-  end
-
-  test "should create as many documents as sended" do
-    assert_difference "Document.count", 2 do
-      post :create, document: {file: [
-        fixture_file_upload('files/empty.pdf'),
-        fixture_file_upload('files/empty.pdf')
-      ]}
-      assert_response :redirect
-      assert_redirected_to documents_path
+      xhr :post, :create, document: {file: fixture_file_upload('files/empty.pdf')}
+      assert_response :success
     end
   end
 

@@ -1,4 +1,8 @@
 .document-upload
   = link_to "Upload documents", "#upload-document", class: "button document-upload-link"
+  .document-upload-progress
+    %h2 Documents are being sent to the server
+    .document-upload-progress-queue
+    = link_to "Return to the documents page", documents_path, class: "document-upload-progress-return-button button is-button-disabled"
   = form_for document, html: {class: "document-upload-form"} do |f|
-    = f.file_field :file, multiple: true
+    = f.file_field :file, multiple: true, name: "document[file]"

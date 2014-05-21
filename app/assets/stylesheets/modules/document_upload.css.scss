@@ -1,3 +1,29 @@
+@import "globals/all";
+
 .document-upload-form {
   display: none;
+}
+
+.document-upload-progress {
+  display: none;
+}
+
+.document-upload-progress-queue {
+  margin: 1em 0;
+}
+
+.document-upload-progress-return-button {
+  margin: 1em 0;
+  float: right;
+}
+
+.is-document-upload-progress-active {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 80%;
+  padding: 1em;
+  color: $white;
+  z-index: 100;
 }

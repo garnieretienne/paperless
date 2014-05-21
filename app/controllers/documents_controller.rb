@@ -5,15 +5,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    if params.require(:document)[:file].kind_of? Array
-      params.require(:document)[:file].each do |file|
-        document = current_user.documents.from_file(document_params.merge(file: file))
-        document.save
-      end
-    else
-      document = current_user.documents.from_file(document_params)
-      document.save
-    end
+    document = current_user.documents.from_file(document_params)
+    document.save
     respond_to do |format|
       format.js {render nothing: true}
     end

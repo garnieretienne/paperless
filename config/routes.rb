@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :labels, only: [:show, :create, :destroy]
 
+  post 'modules/:module_name' => 'modules#render_module'
+
   root 'documents#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,26 @@
+@import "globals/all";
+
+.progress-bar {
+  margin: 1em 0;
+}
+
+.progress-bar-filename {
+  font-size: 1em;
+  padding: 0.2em 0;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 1.2em;
+}
+
+.progress-bar-container-percent {
+  width: 25%;
+  height: 100%;
+  background-color: $blue;
+}
+
+.is-progress-bar-container-percent-complete {
+  width: 100%;
+  background-color: $green;
+}

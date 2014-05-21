@@ -9,3 +9,8 @@
   font-size: 0.8em;
   border: 0;
 }
+
+.is-button-disabled {
+  pointer-events: none;
+  background-color: $gray;
+}

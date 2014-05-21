@@ -15,4 +15,17 @@
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 //= require turbolinks
+//= require_self
 //= require_tree .
+
+// Send a request to the 'modules' controller to get a module HTML content
+var render_module = function(moduleName, locals, callback){
+  $.ajax("/modules/" + moduleName, {
+    type: "POST",
+    data: {locals: locals},
+    dataType: "html",
+    success: function(data, textStatus, jqXHR){
+      callback(data);
+    }
+  });
+}

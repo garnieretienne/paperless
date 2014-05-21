@@ -17,7 +17,7 @@ class Document < ActiveRecord::Base
   validates :labels, same_user_ids: true
 
   # Scopes
-  default_scope { order(created_at: :desc) }
+  default_scope { includes(:labels).order(created_at: :desc) }
 
   # Class methods
 
