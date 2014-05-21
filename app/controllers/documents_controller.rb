@@ -14,7 +14,9 @@ class DocumentsController < ApplicationController
       document = current_user.documents.from_file(document_params)
       document.save
     end
-    redirect_to documents_path
+    respond_to do |format|
+      format.js {render nothing: true}
+    end
   end
 
   def open
