@@ -41,7 +41,8 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+# ! Does not work with ruby > 2.1
+#gem 'debugger', group: [:development, :test]
 
 # Use Puma as multithreading server
 gem 'puma'
