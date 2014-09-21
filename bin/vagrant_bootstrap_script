@@ -49,9 +49,6 @@ rbenv download $ruby_version
 rbenv global $ruby_version
 rbenv rehash
 
-# Fix issue `No such file or directory @ rb_sysopen` installing bundler
-rm -f /home/vagrant/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/cache
-
 gem install bundler
 rbenv rehash
 
